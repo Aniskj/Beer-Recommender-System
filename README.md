@@ -1,31 +1,69 @@
 # Beer-Recommender-System
 Building a Crowdsourced Recommender System
-# Objective 
-The objective of this project is to create the building blocks of a crowdsourced recommender system. It should accept user inputs in the form of desired attributes of a product and come up with 3 recommendations. 
-Obtain reviews of craft beers from beeradvocate.com. 
-https://www.beeradvocate.com/beer/top-rated/
 
-Task A. Extract about 5-6k reviews. 
+### Objective
+To build a crowdsourced beer recommender system using web-scraped reviews and natural language processing (NLP) techniques to analyze customer sentiment and preferences.
 
-Task B. Assume that a customer, who will be using this recommender system, has specified 3 attributes in a product. E.g., one website describes multiple attributes of beer (but you should choose attributes from the actual data)
-https://www.dummies.com/food-drink/drinks/beer/beer-for-dummies-cheat-sheet/
-•	Aggressive (Boldly assertive aroma and/or taste) 
-•	Balanced: Malt and hops in similar proportions; equal representation of malt sweetness and hop bitterness in the flavor — especially at the finish
-•	Complex: Multidimensional; many flavors and sensations on the palate
-•	Crisp: Highly carbonated; effervescent
-•	Fruity: Flavors reminiscent of various fruits or Hoppy: Herbal, earthy, spicy, or citric aromas and flavors of hops or Malty: Grainy, caramel-like; can be sweet or dry
-•	Robust: Rich and full-bodied
+### Business Objective
+To provide personalized beer recommendations based on user reviews, enhancing customer satisfaction and driving sales by leveraging insights from large volumes of unstructured data.
 
-Task C. Perform a similarity analysis using cosine similarity (without word embeddings) with the 3 attributes specified by the customer and the reviews. 
+### Dataset Overview
+The dataset includes:
+- Reviews extracted from various beer-related websites such as BeerAdvocate.
+- Approximately 5-6k reviews covering popular, worst, top-rated, and trending beers.
 
-Task D. For every review, perform a sentiment analysis (using VADER or any LLM). 
+### Analysis Approach
+1. **Data Collection**:
+   - Web scraping using Selenium to extract reviews from multiple beer-related websites.
+   - Targeted URLs include popular, worst, top-rated, fame, top-styles, and trending beer pages on BeerAdvocate.
 
-Task E. Create an evaluation score for each beer that uses both similarity and sentiment scores. 
-Now recommend 3 products to the customer. 
+2. **Preprocessing and NLP**:
+   - Tokenization, stop words removal, and frequency distribution analysis using NLTK.
+   - Sentiment analysis using VADER (Valence Aware Dictionary and sEntiment Reasoner).
+   - POS (Part-of-Speech) tagging and text cleaning to prepare data for analysis.
 
-Task F. How would your recommendation change if you use word vectors (e.g., the spaCy package with medium sized pretrained word vectors) instead of the plain vanilla bag-of-words cosine similarity? One way to analyze the difference would be to consider the % of reviews that mention a preferred attribute.
+3. **Feature Extraction and Similarity Calculation**:
+   - CountVectorizer to convert text data into a matrix of token counts.
+   - Cosine similarity to measure the similarity between different beer reviews based on extracted features.
 
-Task G. How would your recommendations differ if you ignored the similarity and feature sentiment scores and simply chose the 3 highest rated products from your entire dataset? Would these products meet the requirements of the user looking for recommendations? Why or why not? 
+4. **Recommender System Development**:
+   - Building a recommendation engine using similarity scores to suggest beers based on user preferences.
+   - Post-processing to refine recommendations and ensure relevance.
 
-Task H. Using the top four attributes of beer (from word frequency analysis), calculate the lifts between these attributes and any 10 beers in your data. Choose one beer, and find the most similar beer (among the remaining 9) using the lift values.
+### Insights
+1. **Popular Beers**:
+   - Identified beers with high positive sentiment and frequent mentions in reviews.
+   - Popular beers are characterized by their unique flavors, high-quality ingredients, and overall positive customer experiences.
 
+2. **Common Criticisms**:
+   - Extracted negative sentiment to highlight common issues such as taste, packaging, and price.
+   - Useful for brewers to understand areas for improvement and address customer concerns.
+
+3. **Customer Preferences**:
+   - Analysis of keywords and sentiment revealed common preferences for certain beer styles, flavors, and brands.
+   - Insights into what drives customer satisfaction and repeat purchases.
+
+### Recommendations
+1. **Enhance Customer Experience**:
+   - Use insights from positive reviews to highlight popular beers in marketing campaigns.
+   - Address common criticisms by improving product quality and addressing customer concerns directly.
+
+2. **Personalized Recommendations**:
+   - Implement the recommender system on beer retail websites to provide personalized suggestions to customers.
+   - Tailor recommendations based on individual preferences and past purchase history.
+
+3. **Expand Data Sources**:
+   - Continue to collect reviews from additional sources such as social media, forums, and other review platforms.
+   - Integrate more diverse datasets to improve the robustness and accuracy of the recommender system.
+
+4. **Refine NLP Models**:
+   - Experiment with different NLP models and techniques to enhance sentiment analysis and feature extraction.
+   - Continuously fine-tune models based on new data and evolving customer preferences.
+
+### Future Scope for Improvement
+- **Increase Dataset Size**: Continuously update the dataset with new reviews to capture changing customer preferences.
+- **Incorporate Advanced NLP Techniques**: Explore advanced models like BERT or GPT for deeper sentiment analysis and understanding of contextual nuances in reviews.
+- **Real-Time Analysis**: Develop real-time data collection and analysis capabilities to provide up-to-date recommendations.
+- **User Feedback Integration**: Collect and integrate user feedback on recommendations to continuously improve the recommender system's accuracy and relevance.
+
+These insights and recommendations will help in developing a more effective beer recommender system, ultimately enhancing customer satisfaction and driving business growth.
